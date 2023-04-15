@@ -1,4 +1,4 @@
-package game;
+package sample;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,6 +11,7 @@ public class JankenGame {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String message = "";
 
         while (true) {
             System.out.print("じゃんけんの手を入力してください（0:グー, 1:チョキ, 2:パー）：");
@@ -22,30 +23,27 @@ public class JankenGame {
             }
 
             Random random = new Random();
-            int computerHand = random.nextInt(3);
+            int pcHand = random.nextInt(3);
 
             System.out.println("あなたの手：" + handToString(playerHand));
-            System.out.println("コンピュータの手：" + handToString(computerHand));
+            System.out.println("コンピュータの手：" + handToString(pcHand));
 
-            int result = (playerHand - computerHand + 3) % 3;
+            int result = (playerHand - pcHand + 3) % 3;
             if (result == 0) {
-                System.out.println("あいこです。");
+                message = "あいこです！";
             } else if (result == 1) {
-                System.out.println("あなたの勝ちです！");
+                message = "あなたの勝ちです！";
                 break;
             } else {
-                System.out.println("コンピュータの勝ちです。");
+                message = "コンピュータの勝ちです。！";
                 break;
             }
         }
+        System.out.println(message);
         scanner.close();
     }
 
     private static String handToString(int hand) {
-        if (hand < 0 || hand > 2) {
-            return "";
-        } else {
-            return HANDS[hand];
-        }
+        return (hand >= 0 && hand <= 2) ? HANDS[hand] : ""; 
     }
 }
