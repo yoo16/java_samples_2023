@@ -1,6 +1,10 @@
 package sample;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Random;
 
 public class Drink {
@@ -45,6 +49,19 @@ public class Drink {
 		int handIndex = rand.nextInt(3);
 		String hand = hands[handIndex];
 		System.out.println(hand);
+
+		Calendar cal = Calendar.getInstance();
+		int weekIndex = cal.get(Calendar.DAY_OF_WEEK);
+		String[] weekdays = { "日", "月", "火", "水", "木", "金", "土" };
+		String dayOfWeek = weekdays[weekIndex];
+		String message = "今日は" + dayOfWeek + "曜日です。";
+
+		// LocalDate date = LocalDate.now();
+		// Locale locale = new Locale("ja", "JP");
+		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E", locale);
+		// dayOfWeek = date.format(formatter);
+
+		System.out.println(message);
 	}
 
 }

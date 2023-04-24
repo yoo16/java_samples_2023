@@ -31,6 +31,9 @@ public class Method {
 
 		totalPrice = (int) calculateTotalPrice(200, 5, 0.1f);
 		System.out.println(totalPrice + "円");
+
+		totalPrice = (int) calculateTotalPrice(0.1f, 200, 150, 300);
+		System.out.println(totalPrice + "円");
     }
 
     public static Float calculate(Float x) {
@@ -51,6 +54,14 @@ public class Method {
 
 	static int calculateTotalPrice(int price, int amount, float tax) {
 		float totalPrice = (float) price * (float) amount * (1 + tax);
+		return (int) totalPrice;
+	}
+
+	static int calculateTotalPrice(float tax, int... prices) {
+		float totalPrice = 0;
+		for (int price : prices) {
+			totalPrice += (float) price + tax;
+		}
 		return (int) totalPrice;
 	}
 

@@ -12,7 +12,8 @@ public class JankenGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String message = "";
-
+        String playerHandLabel;
+        String pcHandLabel;
         while (true) {
             System.out.print("じゃんけんの手を入力してください（0:グー, 1:チョキ, 2:パー）：");
             int playerHand = scanner.nextInt();
@@ -25,25 +26,25 @@ public class JankenGame {
             Random random = new Random();
             int pcHand = random.nextInt(3);
 
-            System.out.println("あなたの手：" + handToString(playerHand));
-            System.out.println("コンピュータの手：" + handToString(pcHand));
+            playerHandLabel = HANDS[playerHand];
+            pcHandLabel = HANDS[pcHand];
 
             int result = (playerHand - pcHand + 3) % 3;
             if (result == 0) {
-                message = "あいこです！";
+                message = "Draw!";
+                System.out.println(message);
             } else if (result == 1) {
-                message = "あなたの勝ちです！";
+                message = "You lose...";
                 break;
             } else {
-                message = "コンピュータの勝ちです。！";
+                message = "You win!";
                 break;
             }
         }
         System.out.println(message);
+        System.out.println("Player: " + playerHandLabel);
+        System.out.println("PC: " + pcHandLabel);
         scanner.close();
     }
 
-    private static String handToString(int hand) {
-        return (hand >= 0 && hand <= 2) ? HANDS[hand] : ""; 
-    }
 }
