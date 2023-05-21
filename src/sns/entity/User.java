@@ -2,9 +2,9 @@ package sns.entity;
 
 public class User {
     
-    private String email;
-	private String name;
-	private String password;
+    public String email;
+	public String name;
+	public String password;
 
     public String getEmail() {
         return email;
