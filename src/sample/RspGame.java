@@ -3,7 +3,7 @@ package sample;
 import java.util.Random;
 import java.util.Scanner;
 
-public class JankenGame {
+public class RspGame {
     final static int ROCK = 0;
     final static int SCISSORS = 1;
     final static int PAPER = 2;

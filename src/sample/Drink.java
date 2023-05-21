@@ -54,13 +54,13 @@ public class Drink {
 		int weekIndex = cal.get(Calendar.DAY_OF_WEEK);
 		String[] weekdays = { "日", "月", "火", "水", "木", "金", "土" };
 		String dayOfWeek = weekdays[weekIndex];
-		String message = "今日は" + dayOfWeek + "曜日です。";
 
 		// LocalDate date = LocalDate.now();
 		// Locale locale = new Locale("ja", "JP");
 		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E", locale);
 		// dayOfWeek = date.format(formatter);
 
+		String message = "今日は" + dayOfWeek + "曜日です。";
 		System.out.println(message);
 	}
 

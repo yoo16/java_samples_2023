@@ -82,7 +82,7 @@ public class Method {
 
     // 引数が2つのメソッド
     static void greet(String name, String weather) {
-        System.out.println(name + "さん。今日天気は" + weather + "です。");
+        System.out.println(name + "さん。今日は" + weather + "ですね。");
     }
 
     static String loginMessage(String userName) {
