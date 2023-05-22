@@ -5,7 +5,11 @@ public class Character {
 	public String name;
 	public String job;
 	public int hp;
+	public int mp;
 	public int level;
+	public int exp;
+	public int attackPower;
+	public int defencePower;
 
 	//初期化ブロック
 	{
@@ -15,11 +19,16 @@ public class Character {
 	
 	//コンストラクタ
 	public Character(String name, String job) {
-		super();
 		System.out.println("キャラクタ新規作成");
 		this.name = name;
 		this.job = job;
 		this.hp = 50;
+	}
+
+	public Character(String name) {
+		this.name = name;
+		this.level = 1;
+		this.exp = 0;
 	}
 
 	public void walk(String direction) {
