@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
 
-public class Drink {
+public class DrinkApp {
 
 	public static void main(String[] args) {
 		// 配列
