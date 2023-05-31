@@ -9,11 +9,9 @@ public class Item {
 	public int price;
 
 	public Item() {
-		super();
 	}
 
 	public Item(ItemType type, String name, int attackPower, int defencePower, int price) {
-		super();
 		this.name = name;
 		this.type = type;
 		this.price = price;
