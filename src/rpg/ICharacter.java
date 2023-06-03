@@ -1,6 +1,5 @@
 package rpg;
 
-import rpg.item.Item;
 import rpg.magic.Magic;
 
 public interface ICharacter {
@@ -9,6 +8,6 @@ public interface ICharacter {
 	public void attackMagic(Monster monster, Magic magic) ;
 	public void defenceMagic(Magic magic) ;
 	public boolean isAlive();
-	public void equip(Item item);
+
 
 }

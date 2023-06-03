@@ -2,7 +2,7 @@ package rpg;
 
 import rpg.magic.MagicList;
 
-public class AppMagic {
+public class MagicApp {
 
 	public static void main(String[] args) {
 		Wizard wizard = new Wizard("チャーリー");

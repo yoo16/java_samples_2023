@@ -1,11 +1,14 @@
 package rpg;
 
+import rpg.item.Armor;
 import rpg.item.Item;
 import rpg.item.ItemType;
+import rpg.item.Shield;
+import rpg.item.Weapon;
 import rpg.magic.Magic;
 import rpg.magic.MagicType;
 
-public class Character implements ICharacter {
+public class Character implements ICharacter, IEquipment {
 
 	public String name;
 	public String job;
@@ -19,13 +22,13 @@ public class Character implements ICharacter {
 	public Item armor;
 	public Item shield;
 
-	//初期化ブロック
+	// 初期化ブロック
 	{
 		System.out.println("初期化ブロック");
 		level = 1;
 	}
-	
-	//コンストラクタ
+
+	// コンストラクタ
 	public Character(String name, String job) {
 		System.out.println("キャラクタ新規作成");
 		this.name = name;
@@ -45,7 +48,7 @@ public class Character implements ICharacter {
 	}
 
 	public void talk(Character character, String message) {
-		message = character.name + "！"+ message;
+		message = character.name + "！" + message;
 		System.out.println(message);
 	}
 
@@ -60,18 +63,21 @@ public class Character implements ICharacter {
 
 	@Override
 	public void attackMagic(Monster monster, Magic magic) {
-		if (mp < 0) System.out.println("MPがたりない！");
+		if (mp < 0)
+			System.out.println("MPがたりない！");
 		System.out.println(magic.name + "を唱えた！");
 		if (magic.type == MagicType.ATTACK) {
 			int damage = this.attackPower + magic.power - monster.defencePower;
-			if (damage > 0) monster.hp -= damage;
+			if (damage > 0)
+				monster.hp -= damage;
 			System.out.println(monster.name + "に" + magic.power + "のダメージ！");
 		}
 	}
 
 	@Override
 	public void defenceMagic(Magic magic) {
-		if (mp < 0) System.out.println("MPがたりない！");
+		if (mp < 0)
+			System.out.println("MPがたりない！");
 		System.out.println(magic.name + "を唱えた！");
 		if (magic.type == MagicType.DEFENCE) {
 			this.defencePower += magic.power;
@@ -89,16 +95,26 @@ public class Character implements ICharacter {
 
 	@Override
 	public void equip(Item item) {
-		if (item.type == ItemType.WEAPON) {
-			this.weapon = item;
-			this.attackPower += item.attackPower;
-		} else if (item.type == ItemType.ARMOR) {
-			this.armor = item;
-			this.defencePower += item.defencePower;
-		} else if (item.type == ItemType.SHIELD) {
-			this.shield = item;
-			this.defencePower += item.defencePower;
-		}
+		this.defencePower += item.getDefencePower();
+		this.attackPower += item.getAttackPower();
+	}
+
+	@Override
+	public void equip(Weapon weapon) {
+		this.weapon = weapon;
+		equip(weapon);
+	}
+
+	@Override
+	public void equip(Armor armor) {
+		this.armor = armor;
+		equip(armor);
+	}
+
+	@Override
+	public void equip(Shield shield) {
+		this.shield = shield;
+		equip(shield);
 	}
 
 }

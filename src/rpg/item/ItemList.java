@@ -1,23 +1,54 @@
 package rpg.item;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ItemList {
-	
-	public Map<String, Item> map;
-	
+
+	private static String csvPath = "data/rpg/item.csv";
+	public ArrayList<Item> list = new ArrayList<>();
+	public Map<Long, Item> map = new HashMap<>();
+
 	public ItemList() {
-		this.load();
+		this.loadCsv();
 	}
 
-	public void load() {
-		map = new HashMap<>();
-		map.put("bronz_knife", new Item(ItemType.WEAPON, "ブロンズナイフ", 4, 0, 300));
-		map.put("bronz_dagger", new Item(ItemType.WEAPON, "ブロンズダガー", 6, 0, 500));
-		map.put("bronz_armor", new Item(ItemType.ARMOR, "ブロンズアーマー", 0, 4, 400));
-		map.put("bronz_shield", new Item(ItemType.SHIELD, "ブロンズシールド", 0, 4, 600));
-		map.put("normal_drink", new Item(ItemType.HEAL, "ノーマルドリンク", 0, 4, 50));
+	public void loadCsv() {
+		FileInputStream file;
+		InputStreamReader reader;
+		BufferedReader buffer;
+
+		try {
+			file = new FileInputStream(csvPath);
+			reader = new InputStreamReader(file);
+			buffer = new BufferedReader(reader);
+
+			String line = buffer.readLine();
+			line.split(",");
+
+			while ((line = buffer.readLine()) != null) {
+				String[] data = line.split(",");
+
+				Item item = new Item();
+				Long id = Long.parseLong(data[0]);
+				item.setId(id);
+				item.setName(data[1]);
+				item.setType(ItemType.getByValue(data[2]));
+				item.setPrice(Integer.parseInt(data[3]));
+				item.setAttackPower(Integer.parseInt(data[4]));
+				item.setDefencePower(Integer.parseInt(data[5]));
+
+				list.add(item);
+				map.put(id, item);
+			}
+		} catch (Exception e) {
+			System.out.println(csvPath + "が読み込めませんでした");
+		} finally {
+
+		}
 	}
-	
 }
