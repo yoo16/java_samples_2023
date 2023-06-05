@@ -2,6 +2,8 @@ package rpg.item;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +11,7 @@ import java.util.Map;
 
 public class ItemList {
 
-	private static String csvPath = "data/rpg/item.csv";
+	private final static String CSV_PATH = "data/rpg/item.csv";
 	public ArrayList<Item> list = new ArrayList<>();
 	public Map<Long, Item> map = new HashMap<>();
 
@@ -23,32 +25,33 @@ public class ItemList {
 		BufferedReader buffer;
 
 		try {
-			file = new FileInputStream(csvPath);
-			reader = new InputStreamReader(file);
+			file = new FileInputStream(CSV_PATH);
+			reader = new InputStreamReader(file, "UTF-8");
 			buffer = new BufferedReader(reader);
 
 			String line = buffer.readLine();
-			line.split(",");
+			System.out.println(line);
 
 			while ((line = buffer.readLine()) != null) {
 				String[] data = line.split(",");
 
-				Item item = new Item();
 				Long id = Long.parseLong(data[0]);
-				item.setId(id);
-				item.setName(data[1]);
-				item.setType(ItemType.getByValue(data[2]));
-				item.setPrice(Integer.parseInt(data[3]));
-				item.setAttackPower(Integer.parseInt(data[4]));
-				item.setDefencePower(Integer.parseInt(data[5]));
+				String name = data[1];
+				ItemType type = ItemType.valueOf(data[3].toUpperCase());
+				Integer price = Integer.parseInt(data[3]);
+				Integer attackPower = Integer.parseInt(data[4]);
+				Integer defencePower = Integer.parseInt(data[5]);
 
+				Item item = new Item(id, name, type, price, attackPower, defencePower);
 				list.add(item);
 				map.put(id, item);
 			}
+		} catch (FileNotFoundException e) {
+			System.out.println(CSV_PATH + "が読み込めませんでした");
+		} catch (IOException e) {
+			System.out.println("データエラー");
 		} catch (Exception e) {
-			System.out.println(csvPath + "が読み込めませんでした");
-		} finally {
-
+			System.out.println("予期せぬエラー");
 		}
 	}
 }

@@ -2,26 +2,26 @@ package rpg.item;
 
 public class Item {
 
-	private long id;
-
+	private Long id;
 	private String name;
 	private ItemType type;
-	private int attackPower;
-	private int defencePower;
-	private int price;
+	private Integer attackPower;
+	private Integer defencePower;
+	private Integer price;
 
 	public Item() {
 	}
 
-	public Item(ItemType type, String name, int price, int attackPower, int defencePower) {
+	public Item(Long id, String name, ItemType type, Integer attackPower, Integer defencePower, Integer price) {
+		this.id = id;
 		this.name = name;
 		this.type = type;
-		this.price = price;
 		this.attackPower = attackPower;
 		this.defencePower = defencePower;
+		this.price = price;
 	}
 
-	public Item(String name, int price, int attackPower, int defencePower) {
+	public Item(String name, Integer price, Integer attackPower, Integer defencePower) {
 		this.name = name;
 		this.attackPower = attackPower;
 		this.defencePower = defencePower;
@@ -32,7 +32,7 @@ public class Item {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -52,27 +52,27 @@ public class Item {
 		this.type = type;
 	}
 
-	public int getAttackPower() {
+	public Integer getAttackPower() {
 		return attackPower;
 	}
 
-	public void setAttackPower(int attackPower) {
+	public void setAttackPower(Integer attackPower) {
 		this.attackPower = attackPower;
 	}
 
-	public int getDefencePower() {
+	public Integer getDefencePower() {
 		return defencePower;
 	}
 
-	public void setDefencePower(int defencePower) {
+	public void setDefencePower(Integer defencePower) {
 		this.defencePower = defencePower;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	

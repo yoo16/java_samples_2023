@@ -3,7 +3,7 @@ package rpg;
 import rpg.item.Item;
 import rpg.item.ItemList;
 
-public class ItemApp {
+public class ItemListApp {
     
     public static void main(String[] args) {
         ItemList itemList = new ItemList();
