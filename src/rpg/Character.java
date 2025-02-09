@@ -2,7 +2,6 @@ package rpg;
 
 import rpg.item.Armor;
 import rpg.item.Item;
-import rpg.item.ItemType;
 import rpg.item.Shield;
 import rpg.item.Weapon;
 import rpg.magic.Magic;

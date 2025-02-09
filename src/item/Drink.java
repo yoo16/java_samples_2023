@@ -1,7 +1,5 @@
 package item;
 
-import java.util.Scanner;
-
 public class Drink {
 
 	public static void main(String[] args) {

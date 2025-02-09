@@ -6,5 +6,6 @@ public class ItemLoadApp {
     
     public static void main(String[] args) {
         ItemList itemList = new ItemList();
+        System.out.println(itemList.list);
     }
 }
