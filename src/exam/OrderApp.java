@@ -1,7 +1,5 @@
 package exam;
 
-import exam.model.Drink;
-import exam.model.Food;
 import exam.model.Order;
 
 public class OrderApp {
